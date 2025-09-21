@@ -6,68 +6,83 @@ import Services from '../Components/Services'
 import Products from '../Components/Products'
 import Testimonial from '../Components/Testimonial'
 
+// Import Swiper React components: https://swiperjs.com/demos:
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay, Navigation } from 'swiper/modules'
+
 export default function HomePage() {
+    let sliderOptions = {
+        loop: true,
+        modules: [Autoplay],
+        autoplay: {
+          delay: 2000
+        },
+    }
     return (
         <>
-            <div class="container-fluid pb-5 hero-header bg-light mb-5">
-                <div class="container py-5">
-                    <div class="row g-5 align-items-center mb-5">
-                        <div class="col-lg-6">
-                            <h1 class="display-1 mb-4 animated slideInRight">We Make Your <span class="text-primary">Home</span>
-                                Better</h1>
-                            <h5 class="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight">
-                                An Award Winning Studio Since 1990</h5>
+            <div className="container-fluid pb-5 hero-header bg-light mb-5">
+                <div className="container py-5">
+                    <div className="row g-5 align-items-center mb-5">
+                        <div className="col-lg-6">
+                            <h1 className="display-1 mb-4 animated slideInRight">Curated <span className="text-primary">Collections, </span>
+                                Crafted for You.</h1> 
+                            <h5 className="d-inline-block border border-2 border-white py-3 px-5 mb-0 animated slideInRight">
+                                Shop Smarter. Live Better.</h5>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="owl-carousel header-carousel animated fadeIn">
-                                <img class="img-fluid" src="img/hero-slider-1.jpg" alt="" />
-                                <img class="img-fluid" src="img/hero-slider-2.jpg" alt="" />
-                                <img class="img-fluid" src="img/hero-slider-3.jpg" alt="" />
+                        <div className="col-lg-6">
+                            <div className="header-carousel animated fadeIn">
+                                <Swiper classNameName="mySwiper" {...sliderOptions}>
+                                    <SwiperSlide><img className="img-fluid" src="img/hero-slider-1.jpg" alt="" /> </SwiperSlide>
+                                    <SwiperSlide><img className="img-fluid" src="img/hero-slider-2.jpg" alt="" /> </SwiperSlide>
+                                    <SwiperSlide><img className="img-fluid" src="img/hero-slider-3.jpg" alt="" /> </SwiperSlide>
+                                </Swiper>
                             </div>
                         </div>
                     </div>
-                    <div class="row g-5 animated fadeIn">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                                    <i class="fa fa-robot text-primary"></i>
+                    <div className="row g-5 animated fadeIn">
+                        <div className="col-md-6 col-lg-3">
+                            <div className="d-flex align-items-center">
+                                <div className="flex-shrink-0 btn-square border border-2 border-white me-3">
+                                    <i className="fa fa-truck fs-3 text-primary"></i>
                                 </div>
-                                <h5 class="lh-base mb-0">Crafted Furniture</h5>
+                                <h5 className="lh-base mb-0">Fastest Delivery</h5>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                                    <i class="fa fa-robot text-primary"></i>
+                        <div className="col-md-6 col-lg-3">
+                            <div className="d-flex align-items-center">
+                                <div className="flex-shrink-0 btn-square border border-2 border-white me-3">
+                                    <i className="fa fa-check-circle fs-3 text-primary"></i>
                                 </div>
-                                <h5 class="lh-base mb-0">Sustainable Material</h5>
+                                <h5 className="lh-base mb-0">100% Original</h5>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                                    <i class="fa fa-robot text-primary"></i>
+                        <div className="col-md-6 col-lg-3">
+                            <div className="d-flex align-items-center">
+                                <div className="flex-shrink-0 btn-square border border-2 border-white me-3">
+                                    <i className="fa fa-undo fs-4 text-primary"></i>
                                 </div>
-                                <h5 class="lh-base mb-0">Innovative Architects</h5>
+                                <h5 className="lh-base mb-0">7 Days Return Policy</h5>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0 btn-square border border-2 border-white me-3">
-                                    <i class="fa fa-robot text-primary"></i>
+                        <div className="col-md-6 col-lg-3">
+                            <div className="d-flex align-items-center">
+                                <div className="flex-shrink-0 btn-square border border-2 border-white me-3">
+                                    <i className="fa fa-percent fs-4 text-primary"></i>
                                 </div>
-                                <h5 class="lh-base mb-0">Budget Friendly</h5>
+                                <h5 className="lh-base mb-0">Upto 90% Off</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <About/>
-            <Features/>
-            <ProductSlider/>
-            <Services/>
-            <Products/>
-            <Testimonial/>
+            <About />
+            <Features />
+            <ProductSlider />
+            <Services />
+            <Products />
+            <Testimonial />
         </>
     )
 }
