@@ -11,6 +11,9 @@ import ProductPage from './Pages/ProductPage'
 import TestimonialPage from './Pages/TestimonialPage'
 import ContactusPage from './Pages/ContactusPage'
 import ErrorPage from './Pages/ErrorPage'
+import AdminHome from './Pages/Admin/AdminHome'
+import AdminMaincategory from './Pages/Admin/Maincategory/AdminMaincategory'
+import AdminCreateMaincategory from './Pages/Admin/Maincategory/AdminCreateMaincategory'
 
 export default function App() {
     return (
@@ -26,8 +29,10 @@ export default function App() {
                 <Route path='/testimonials' element={<TestimonialPage/>}/>
                 <Route path='/contactus' element={<ContactusPage/>}/>
 
-
-                
+                {/* Admin Pages */}
+                <Route path='/admin' element={<AdminHome/>}/>
+                <Route path='/admin/maincategory' element={<AdminMaincategory/>}/>
+                <Route path='/admin/maincategory/create' element={<AdminCreateMaincategory/>}/>
                 <Route path='/*' element={<ErrorPage/>}/>
             </Routes>
             <Footer />

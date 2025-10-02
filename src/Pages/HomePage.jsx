@@ -9,8 +9,8 @@ import Testimonial from '../Components/Testimonial'
 // Import Swiper React components: https://swiperjs.com/demos:
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { Autoplay, Navigation } from 'swiper/modules'
+import "swiper/css";
 
 export default function HomePage() {
     let sliderOptions = {

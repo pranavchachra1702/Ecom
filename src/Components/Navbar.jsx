@@ -23,6 +23,7 @@ export default function Navbar() {
                             <Link to="/services" className="nav-item nav-link">Services</Link>
                             <Link to="/testimonials" className="nav-item nav-link">Testimonial</Link>
                             <Link to="/contactus" className="nav-item nav-link">Contact</Link>
+                            <Link to="/admin" className="nav-item nav-link">Admin</Link>
                             <div className="nav-item dropdown">
                                 <Link to="#!" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pranav Chachra</Link>
                                 <div className="dropdown-menu bg-light mt-2">
