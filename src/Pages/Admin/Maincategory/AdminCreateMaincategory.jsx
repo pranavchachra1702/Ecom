@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Breadcrum from '../../../Components/Breadcrum'
 import AdminSidebar from './../AdminSidebar'
 import { Link } from 'react-router-dom'
+import FormValidator from '../../../Validators/FormValidator'
+import ImageValidator from '../../../Validators/ImageValidator'
 
 export default function AdminCreateMaincategory() {
     let [data, setData] = useState({
@@ -15,11 +17,39 @@ export default function AdminCreateMaincategory() {
     })
     let [show, setShow] = useState(false)
     function getInputData(e) {
+        let name = e.target.name
+        let value = name === "pic" ? "maincategory/"+ e.target.files[0].name : e.target.value
+
+        // For a Real Backend:
+        // let value = name === "pic" ? e.target.files[0].name : e.target.value
+
+        setErrorMessage(old=>{
+            return {
+                ...old,
+                [name]: name==="pic"?ImageValidator(e):FormValidator(e)
+            }
+        })
+
+        setData(old=>{
+            return {
+                ...old,
+                [name]: name==="status"?(value==="1"?true:false):value
+            }
+        })
 
     }
-    function postData(e) {
+    async function postData(e) {
         e.preventDefault()
-        setShow(true)
+        let error = Object.values(errorMessage).find(x=>x!=="")
+
+        if(error)
+            setShow(true)
+        else
+            alert(`
+                Name: ${data.name}
+                Pic: ${data.pic}
+                Active: ${data.status}
+        `)
     }
     return (
         <>
@@ -35,17 +65,17 @@ export default function AdminCreateMaincategory() {
                             <div className="row">
                                 <div className="col-12 mb-3">
                                     <label>Name*</label>
-                                    <input type="text" name="name" placeholder='Name' className={`${show & errorMessage.name ? 'border-danger' : ''} form-control`} />
+                                    <input type="text" name="name" onChange={getInputData} placeholder='Name' className={`${show & errorMessage.name ? 'border-danger' : ''} form-control`} />
                                     {show && errorMessage.name ? <p className='text-danger'>{errorMessage.name}</p> : null}
                                 </div>
                                 <div className="col-lg-6 mb-3">
                                     <label>Pic*</label>
-                                    <input type="file" name="pic" className={`${show & errorMessage.pic ? 'border-danger' : ''} form-control`} />
+                                    <input type="file" name="pic" onChange={getInputData} className={`${show & errorMessage.pic ? 'border-danger' : ''} form-control`} />
                                     {show && errorMessage.pic ? <p className='text-danger'>{errorMessage.pic}</p> : null}
                                 </div>
                                 <div className="col-lg-6 mb-3">
                                     <label>Status*</label>
-                                    <select name="status" className='form-select'>
+                                    <select name="status" onChange={getInputData} className='form-select'>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
