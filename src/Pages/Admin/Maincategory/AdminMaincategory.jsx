@@ -38,11 +38,15 @@ export default function AdminMaincategory() {
 
         response = await response.json()
         setMaincategoryStateData(response)
-        $('#DataTable').DataTable()
+        let time = setTimeout(() => {
+            $('#DataTable').DataTable()
+        }, 500)
+        return time
     }
 
     useEffect(() => {
-        getAPIData()
+        let time = getAPIData()
+        return () => clearTimeout(time)
     }, [])
 
     return (
