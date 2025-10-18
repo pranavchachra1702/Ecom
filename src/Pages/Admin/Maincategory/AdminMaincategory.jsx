@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react'
+
+
+import $ from 'jquery';
+import 'datatables.net-dt/css/dataTables.dataTables.min.css';
+import 'datatables.net';
+import { Link } from 'react-router-dom'
+
+
 import Breadcrum from '../../../Components/Breadcrum'
 import AdminSidebar from './../AdminSidebar'
-import { Link } from 'react-router-dom'
+
+
 
 export default function AdminMaincategory() {
     let [MaincategoryStateData, setMaincategoryStateData] = useState([])
@@ -29,6 +38,7 @@ export default function AdminMaincategory() {
 
         response = await response.json()
         setMaincategoryStateData(response)
+        $('#DataTable').DataTable()
     }
 
     useEffect(() => {
@@ -45,7 +55,7 @@ export default function AdminMaincategory() {
                     </div>
                     <div className="col-md-9">
                         <h5 className='border p-2 text-center'>Maincategory <Link to='/admin/maincategory/create'><i className='fa fa-plus float-end'></i></Link></h5>
-                        <table className='table table-bordered table-striped'>
+                        <table id='DataTable' className='table table-bordered table-striped'>
                             <thead>
                                 <tr>
                                     <th>ID</th>
