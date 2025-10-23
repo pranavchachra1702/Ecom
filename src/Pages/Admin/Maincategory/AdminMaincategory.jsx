@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 
 
 import $ from 'jquery';
@@ -10,10 +10,14 @@ import { Link } from 'react-router-dom'
 import Breadcrum from '../../../Components/Breadcrum'
 import AdminSidebar from './../AdminSidebar'
 
-
+import { getMaincategory } from "../../../Redux/ActionCreators/MaincategoryActionCreators"
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function AdminMaincategory() {
-    let [MaincategoryStateData, setMaincategoryStateData] = useState([])
+    // let [MaincategoryStateData, setMaincategoryStateData] = useState([])
+    let MaincategoryStateData = useSelector(state => state.MaincategoryStateData)
+    let dispatch = useDispatch()
+
 
     async function deleteRecord(id) {
         if (window.confirm("Are you sure to delete that record?")) {
@@ -28,16 +32,24 @@ export default function AdminMaincategory() {
             getAPIData()
         }
     }
-    async function getAPIData() {
-        let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/maincategory`, {
-            method: "GET",
-            headers: {
-                "content-type": "application/json"
-            }
-        })
+    // async function getAPIData() {
+    //     let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/maincategory`, {
+    //         method: "GET",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         }
+    //     })
 
-        response = await response.json()
-        setMaincategoryStateData(response)
+    //     response = await response.json()
+    //     setMaincategoryStateData(response)
+    //     let time = setTimeout(() => {
+    //         $('#DataTable').DataTable()
+    //     }, 500)
+    //     return time
+    // }
+
+    function getAPIData() {
+        dispatch(getMaincategory())
         let time = setTimeout(() => {
             $('#DataTable').DataTable()
         }, 500)
@@ -47,7 +59,7 @@ export default function AdminMaincategory() {
     useEffect(() => {
         let time = getAPIData()
         return () => clearTimeout(time)
-    }, [])
+    }, [MaincategoryStateData.length])
 
     return (
         <>
