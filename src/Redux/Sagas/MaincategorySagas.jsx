@@ -26,7 +26,7 @@ function* updateSaga(action) {                                         // Worker
 }
 
 function* deleteSaga(action) {                                         // Worker
-    yield deleteRecord("maincategory", action.payload)
+    let response = yield deleteRecord("maincategory", action.payload)
     yield put({ type: DELETE_MAINCATEGORY_RED, payload: response })
 
 }

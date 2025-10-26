@@ -89,7 +89,7 @@ export async function updateMultipartRecord(collection, payload) {
 
 export async function deleteRecord(collection, payload) {
     try {
-        let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/${collection}`, {
+        let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/${collection}/${payload.id}`, {
             method: "DELETE",
             headers: {
                 "content-type": "application/json"
