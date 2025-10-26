@@ -5,8 +5,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import FormValidator from '../../../Validators/FormValidator'
 import ImageValidator from '../../../Validators/ImageValidator'
 
+import { getMaincategory, createMaincategory } from "../../../Redux/ActionCreators/MaincategoryActionCreators"
+import { useDispatch, useSelector } from 'react-redux'
 export default function AdminCreateMaincategory() {
-    let [MaincategoryStateData, setMaincategoryStateData] = useState([])
+    // let [MaincategoryStateData, setMaincategoryStateData] = useState([])
     let [data, setData] = useState({
         name: "",
         pic: "",
@@ -18,6 +20,8 @@ export default function AdminCreateMaincategory() {
     })
     let [show, setShow] = useState(false)
 
+    let MaincategoryStateData = useSelector(state => state.MaincategoryStateData)
+    let dispatch = useDispatch()
     let navigate = useNavigate()
     function getInputData(e) {
         let name = e.target.name
@@ -40,6 +44,7 @@ export default function AdminCreateMaincategory() {
             }
         })
     }
+    /*
     async function postData(e) {
         e.preventDefault()
         let error = Object.values(errorMessage).find(x => x !== "")
@@ -74,20 +79,60 @@ export default function AdminCreateMaincategory() {
             }
         }
     }
+    */
+
+    function postData(e) {
+        e.preventDefault()
+        let error = Object.values(errorMessage).find(x => x !== "")
+
+        if (error)
+            setShow(true)
+        else {
+            let item = MaincategoryStateData.find(x => x.name.toLocaleLowerCase() === data.name.toLocaleLowerCase())
+            if (item) {
+                setShow(true)
+                setErrorMessage(old => {
+                    return {
+                        ...old,
+                        'name': 'Main Category with this name already exists'
+                    }
+                })
+            }
+            else {
+                dispatch(createMaincategory({ ...data }))
+                
+                // let formData = new FormData()
+                // formData.append("name", data.name)
+                // formData.append("pic", data.pic)
+                // formData.append("status", data.status)
+                // dispatch(createMaincategory(formData))
+
+
+                navigate("/admin/maincategory")
+            }
+        }
+    }
+    /*
+        useEffect(() => {
+            (async () => {
+                let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/maincategory`, {
+                    method: "GET",
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                })
+    
+                response = await response.json()
+                setMaincategoryStateData(response)
+            })()
+        }, [])
+        */
 
     useEffect(() => {
-        (async () => {
-            let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/maincategory`, {
-                method: "GET",
-                headers: {
-                    "content-type": "application/json"
-                }
-            })
-
-            response = await response.json()
-            setMaincategoryStateData(response)
+        (() => {
+            dispatch(getMaincategory())
         })()
-    }, [])
+    }, [MaincategoryStateData.length])
     return (
         <>
             <Breadcrum title="Admin" />
