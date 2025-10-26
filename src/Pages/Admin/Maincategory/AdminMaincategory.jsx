@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 
 import $ from 'jquery';
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import Breadcrum from '../../../Components/Breadcrum'
 import AdminSidebar from './../AdminSidebar'
 
-import { getMaincategory } from "../../../Redux/ActionCreators/MaincategoryActionCreators"
+import { deleteMaincategory, getMaincategory } from "../../../Redux/ActionCreators/MaincategoryActionCreators"
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function AdminMaincategory() {
@@ -19,16 +19,23 @@ export default function AdminMaincategory() {
     let dispatch = useDispatch()
 
 
-    async function deleteRecord(id) {
-        if (window.confirm("Are you sure to delete that record?")) {
-            let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/maincategory/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "content-type": "application/json"
-                }
-            })
+    // async function deleteRecord(id) {
+    //     if (window.confirm("Are you sure to delete that record?")) {
+    //         let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/maincategory/${id}`, {
+    //             method: "DELETE",
+    //             headers: {
+    //                 "content-type": "application/json"
+    //             }
+    //         })
 
-            response = await response.json()
+    //         response = await response.json()
+    //         getAPIData()
+    //     }
+    // }
+    
+    function deleteRecord(id) {
+        if (window.confirm("Are you sure to delete that record: ")) {
+            dispatch(deleteMaincategory({ id: id }))
             getAPIData()
         }
     }
