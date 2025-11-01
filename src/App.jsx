@@ -15,6 +15,9 @@ import AdminHome from './Pages/Admin/AdminHome'
 import AdminMaincategory from './Pages/Admin/Maincategory/AdminMaincategory'
 import AdminCreateMaincategory from './Pages/Admin/Maincategory/AdminCreateMaincategory'
 import AdminUpdateMaincategory from './Pages/Admin/Maincategory/AdminUpdateMaincategory'
+import AdminUpdateSubcategory from './Pages/Admin/Subcategory/AdminUpdateSubcategory'
+import AdminCreateSubcategory from './Pages/Admin/Subcategory/AdminCreateSubcategory'
+import AdminSubcategory from './Pages/Admin/Subcategory/AdminSubcategory'
 
 export default function App() {
     return (
@@ -35,6 +38,11 @@ export default function App() {
                 <Route path='/admin/maincategory' element={<AdminMaincategory/>}/>
                 <Route path='/admin/maincategory/create' element={<AdminCreateMaincategory/>}/>
                 <Route path='/admin/maincategory/update/:id' element={<AdminUpdateMaincategory/>}/>
+
+                <Route path='/admin/subcategory' element={<AdminSubcategory/>}/>
+                <Route path='/admin/subcategory/create' element={<AdminCreateSubcategory/>}/>
+                <Route path='/admin/subcategory/update/:id' element={<AdminUpdateSubcategory/>}/>
+
                 <Route path='/*' element={<ErrorPage/>}/>
             </Routes>
             <Footer />
