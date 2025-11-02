@@ -12,7 +12,7 @@ export default function AdminUpdateMaincategory() {
     let { id } = useParams()
     // let [MaincategoryStateData, setMaincategoryStateData] = useState([])
 
-    let MaincategoryStateData = useSelector()
+    let MaincategoryStateData = useSelector(state=>state.MaincategoryStateData)
     let dispatch = useDispatch()
 
     let [data, setData] = useState({

@@ -12,7 +12,7 @@ export default function AdminUpdateSubcategory() {
     let { id } = useParams()
     // let [SubcategoryStateData, setSubcategoryStateData] = useState([])
 
-    let SubcategoryStateData = useSelector()
+    let SubcategoryStateData = useSelector(state=>state.SubcategoryStateData)
     let dispatch = useDispatch()
 
     let [data, setData] = useState({
