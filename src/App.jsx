@@ -18,6 +18,9 @@ import AdminUpdateMaincategory from './Pages/Admin/Maincategory/AdminUpdateMainc
 import AdminUpdateSubcategory from './Pages/Admin/Subcategory/AdminUpdateSubcategory'
 import AdminCreateSubcategory from './Pages/Admin/Subcategory/AdminCreateSubcategory'
 import AdminSubcategory from './Pages/Admin/Subcategory/AdminSubcategory'
+import AdminBrand from './Pages/Admin/Brand/AdminBrand'
+import AdminCreateBrand from './Pages/Admin/Brand/AdminCreateBrand'
+import AdminUpdateBrand from './Pages/Admin/Brand/AdminUpdateBrand'
 
 export default function App() {
     return (
@@ -42,6 +45,10 @@ export default function App() {
                 <Route path='/admin/subcategory' element={<AdminSubcategory/>}/>
                 <Route path='/admin/subcategory/create' element={<AdminCreateSubcategory/>}/>
                 <Route path='/admin/subcategory/update/:id' element={<AdminUpdateSubcategory/>}/>
+
+                <Route path='/admin/brand' element={<AdminBrand/>}/>
+                <Route path='/admin/brand/create' element={<AdminCreateBrand/>}/>
+                <Route path='/admin/brand/update/:id' element={<AdminUpdateBrand/>}/>
 
                 <Route path='/*' element={<ErrorPage/>}/>
             </Routes>
