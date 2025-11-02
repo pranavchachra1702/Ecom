@@ -5,7 +5,7 @@ import Footer from './Components/Footer'
 import HomePage from './Pages/HomePage'
 import AboutPage from './Pages/AboutPage'
 import FeaturesPage from './Pages/FeaturesPage'
-import ServicesPage from './Pages/ServicesPage'
+// import ServicesPage from './Pages/ServicesPage'
 import ShopPage from './Pages/ShopPage'
 import ProductPage from './Pages/ProductPage'
 import TestimonialPage from './Pages/TestimonialPage'
@@ -30,7 +30,7 @@ export default function App() {
                 <Route path='' element={<HomePage/>}/>
                 <Route path='/about' element={<AboutPage/>}/>
                 <Route path='/features' element={<FeaturesPage/>}/>
-                <Route path='/services' element={<ServicesPage/>}/>
+                {/* <Route path='/services' element={<ServicesPage/>}/> */}
                 <Route path='/shop' element={<ShopPage/>}/>
                 <Route path='/product/:id' element={<ProductPage/>}/>
                 <Route path='/testimonials' element={<TestimonialPage/>}/>

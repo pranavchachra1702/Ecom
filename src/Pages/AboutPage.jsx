@@ -2,7 +2,7 @@ import React from 'react'
 import Breadcrum from '../Components/Breadcrum'
 import About from '../Components/About'
 import Features from '../Components/Features'
-import Services from '../Components/Services'
+// import Services from '../Components/Services'
 import Testimonial from '../Components/Testimonial'
 
 export default function AboutPage() {
@@ -11,7 +11,7 @@ export default function AboutPage() {
     <Breadcrum title="About Us"/>
     <About/>
     <Features/>
-    <Services/>
+    {/* <Services/> */}
     <Testimonial/>
     </>
   )

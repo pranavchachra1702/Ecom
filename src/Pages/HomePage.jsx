@@ -2,7 +2,7 @@ import React from 'react'
 import About from '../Components/About'
 import Features from '../Components/Features'
 import ProductSlider from '../Components/ProductSlider'
-import Services from '../Components/Services'
+// import Services from '../Components/Services'
 import Products from '../Components/Products'
 import Testimonial from '../Components/Testimonial'
 
@@ -80,7 +80,7 @@ export default function HomePage() {
             <About />
             <Features />
             <ProductSlider />
-            <Services />
+            {/* <Services /> */}
             <Products />
             <Testimonial />
         </>
