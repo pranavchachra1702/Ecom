@@ -22,6 +22,10 @@ import AdminBrand from './Pages/Admin/Brand/AdminBrand'
 import AdminCreateBrand from './Pages/Admin/Brand/AdminCreateBrand'
 import AdminUpdateBrand from './Pages/Admin/Brand/AdminUpdateBrand'
 
+import AdminFeature from './Pages/Admin/Feature/AdminFeature'
+import AdminCreateFeature from './Pages/Admin/Feature/AdminCreateFeature'
+import AdminUpdateFeature from './Pages/Admin/Feature/AdminUpdateFeature'
+
 export default function App() {
     return (
         <BrowserRouter>
@@ -50,6 +54,10 @@ export default function App() {
                 <Route path='/admin/brand/create' element={<AdminCreateBrand/>}/>
                 <Route path='/admin/brand/update/:id' element={<AdminUpdateBrand/>}/>
 
+                <Route path='/admin/feature' element={<AdminFeature/>}/>
+                <Route path='/admin/feature/create' element={<AdminCreateFeature/>}/>
+                <Route path='/admin/feature/update/:id' element={<AdminUpdateFeature/>}/>
+                
                 <Route path='/*' element={<ErrorPage/>}/>
             </Routes>
             <Footer />

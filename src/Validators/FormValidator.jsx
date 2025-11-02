@@ -8,7 +8,13 @@ export default function FormValidator(e) {
                 return name + "Field must be 3-30 characters"
             else
                 return ""
-
+            
+        case "icon":
+        case "shortDescription":
+            if(!value || value.length === 0)
+                return "Field is Mandatory"
+            else 
+                return ""
         default:
             return ""
     }
