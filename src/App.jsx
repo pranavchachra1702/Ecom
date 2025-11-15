@@ -26,6 +26,7 @@ import AdminFeature from './Pages/Admin/Feature/AdminFeature'
 import AdminCreateFeature from './Pages/Admin/Feature/AdminCreateFeature'
 import AdminUpdateFeature from './Pages/Admin/Feature/AdminUpdateFeature'
 
+import AdminSetting from './Pages/Admin/Setting/AdminSetting'
 export default function App() {
     return (
         <BrowserRouter>
@@ -57,6 +58,8 @@ export default function App() {
                 <Route path='/admin/feature' element={<AdminFeature/>}/>
                 <Route path='/admin/feature/create' element={<AdminCreateFeature/>}/>
                 <Route path='/admin/feature/update/:id' element={<AdminUpdateFeature/>}/>
+
+                <Route path='/admin/setting' element={<AdminSetting/>}/>
                 
                 <Route path='/*' element={<ErrorPage/>}/>
             </Routes>
